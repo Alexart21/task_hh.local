@@ -20,7 +20,6 @@ class SaveController extends Controller
 
         return response()->json([
             'success' => $res1 && $res2,
-            'type' => $data
         ]);
     }
 
