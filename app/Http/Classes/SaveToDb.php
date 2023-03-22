@@ -19,6 +19,8 @@ class SaveToDb implements Save
     }
     function insert()
     {
+        // передаем имя базы данных для соединения
+        // изменить можно в .env
         $ticket = new Ticket(config('ticket.db'));
         $ticket->name = $this->name;
         $ticket->phone = $this->phone;
