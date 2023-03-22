@@ -19,7 +19,7 @@ class SaveToDb implements Save
     }
     function insert()
     {
-        $ticket = new Ticket();
+        $ticket = new Ticket(config('ticket.db'));
         $ticket->name = $this->name;
         $ticket->phone = $this->phone;
         $ticket->msg = $this->msg;

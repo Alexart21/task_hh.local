@@ -9,6 +9,13 @@ class Ticket extends Model
 {
     use HasFactory;
 
+    protected $connection = 'mysql';
+
+    public function __construct($db)
+    {
+        $this->connection = $db;
+    }
+
 //    protected $guarded = [];
     protected $fillable = [
         'name',
