@@ -22,7 +22,7 @@ class SaveToFile implements Save
     {
         $content =  'Имя: ' . $this->name . ' Телефон: ' . $this->phone . ' Заявка: ' . $this->msg. "\n";
 
-        $path = 'tickets.txt';
+        $path = config('ticket.file');
         return Storage::append($path, $content);
     }
 

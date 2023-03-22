@@ -3,8 +3,6 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Validation\ValidationException;
 
 class TicketFormRequest extends FormRequest
 {
@@ -31,14 +29,6 @@ class TicketFormRequest extends FormRequest
             'msg.min' => '2 буквы хотя бы',
             'msg.max' => 'не более 1000 символов',
         ];
-    }
-
-    protected function failedValidation(Validator $validator) {
-        $response = response()
-            ->json([ 'result' => false, 'errors' => $validator->errors()], 422);
-
-        throw (new ValidationException($validator, $response))
-            ->errorBag($this->errorBag);
     }
 
 }

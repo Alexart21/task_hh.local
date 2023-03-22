@@ -2,10 +2,8 @@
 
 namespace App\Http\Classes;
 
-use App\Http\Classes\Save;
 use App\Http\Controllers\Controller;
-use App\Http\Classes\SaveToDb;
-use App\Http\Classes\SaveToFile;
+
 
 class SaveFactory extends Controller
 {
@@ -27,6 +25,11 @@ class SaveFactory extends Controller
     public function saveToFile() : SaveToFile
     {
         return new SaveToFile($this->name, $this->phone, $this->msg);
+    }
+
+    public function sendToEmail() : SendToEmail
+    {
+        return new SendToEmail($this->name, $this->phone, $this->msg);
     }
 
 }
