@@ -10,6 +10,7 @@ class SaveController extends Controller
 {
     public function store(TicketFormRequest $request)
     {
+
         $data = $request->only(['name', 'phone', 'msg']);
 
         $factory = new SaveFactory($data['name'], $data['phone'], $data['msg']);
@@ -19,7 +20,7 @@ class SaveController extends Controller
         $sender_emaill = config('ticket.email') ?? false;
 
         // без очередей
-        $flag = true;
+        /*$flag = true;
         if($save_to_db){
             $db = $factory->saveToDb();
             $res =  $db->insert();
@@ -38,16 +39,15 @@ class SaveController extends Controller
 
         return response()->json([
             'success' => $flag,
-        ]);
+        ]);*/
 
 
-        // по хорошему нужны бы очереди
-        // в задании не было закомментировал
-        /*TicketJob::dispatch($data);
+        // отправляем в очередь
+        TicketJob::dispatch($data);
 
         return response()->json([
             'success' => true,
-        ]);*/
+        ]);
     }
 
 }
